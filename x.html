@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt</title>
+    <style>
+        body{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+        <input type="text" placeholder="AD girinziz" id="a">
+        <input type="text" placeholder="SoyAD giriniz" id="b">
+        <input type="text" placeholder="E-mail giriniz" id="c">
+        <button onclick=kayit()><h1>Kayıt Ol</h1></button>
+
+        <a href="a.html"><h1>Ana Sayfaya Dön</h1></a>
+
+        <script>
+            function kayit(){
+                var a=document.getElementById("a").value;
+                var b=document.getElementById("b").value;
+                var c=document.getElementById("c").value;
+                if(a==""){alert("AD girişi yapmadınız");}
+                if(b==""){alert("SoyAD girşi yapmadınız");}
+                if(c==""){alert("E-mail girişi yapmadınız");}
+            }
+        </script>
+</body>
+</html>

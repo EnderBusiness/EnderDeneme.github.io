@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyun</title>
+    <style>
+        body{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .a{
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="c" width="500" height="750" style="background-color: green;"></canvas>
+    <button onclick=Devam()>Oyunu Başlat</button>
+    <var class="a">
+    <h1> 1. oyuncu puanı <p id="bir"></p></h1>
+    <h1> 2. oyuncu puanı <p id="iki"></p></h1>
+    <h1><a href="a.html">Ana Sayfaya Dön</a></h1>
+    </var>
+    <script>
+        function Devam(){b=5;u=5;}
+
+        var canvas=document.getElementById("c");
+        var ctx=canvas.getContext("2d");
+        var x=200;
+        var y=0;
+
+        var g=200;
+        var h=0;
+
+        var a=375;
+        var b=0;
+
+        var u=0;
+        var t=250;
+        var g=100;
+
+        var i=0;
+        var l=0;
+        function draw(){
+
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+
+            ctx.beginPath();
+            ctx.arc(t, a, 20, 0, Math.PI * 2);
+            ctx.fillStyle="red";
+            ctx.fill();
+
+            a = a + b;
+            t = t + u;
+
+            if(t>480){u=-5;}
+            if(t<20){u=5;}
+            
+            if (a >= 680 && a <= 705 && t >= x && t <= x + 100) {
+                b=-5; 
+            }
+
+            if (a >= 80 && a <= 95 && t >= g && t <= g + 100) {
+                b=5; 
+            }
+
+            if(a<0){a=475;i=i+1;}
+
+            if(a>750){a=275;l=l+1;}
+
+            ctx.fillStyle="black";
+            ctx.fillRect(x,700,100,25);
+            x=x+y;
+            if(x>401){x=x-7.5;}
+            if(x<0){x=x+7.5;}
+
+            ctx.fillStyle="black";
+            ctx.fillRect(g,50,100,25);
+            g=g+h;
+            if(g>401){g=g-7.5}
+            if(g<0){g=g+7.5}
+
+            document.getElementById("bir").innerHTML=i;
+            document.getElementById("iki").innerHTML=l;
+
+            requestAnimationFrame(draw);
+        }
+
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "ArrowRight") { y = 7.5;}
+            if (e.key === "ArrowLeft") { y = -7.5;}
+            if (e.key === "d") {h=7.5;}
+            if (e.key ==="a") {h=-7.5;}
+        });
+        document.addEventListener("keyup", function(e){
+            if (e.key ==="ArrowRight") {y=0;}
+            if (e.key ==="ArrowLeft") {y=0;}
+            if (e.key === "d") {h=0;}
+            if (e.key ==="a") {h=0;}
+        });
+        draw();
+    </script>
+</body>
+</html>
